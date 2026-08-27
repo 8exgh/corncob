@@ -15,6 +15,8 @@ Then open the URL printed by Vite and click **Start engine**. The pinned js-dos 
 
 The original is 16-bit MASM and talks directly to DOS, BIOS, VGA, keyboard, timer, and sound hardware interfaces. WebAssembly cannot execute that source directly. This project therefore preserves the released machine code and runs it with a WebAssembly DOS/PC compatibility layer. This is the fidelity-first version: gameplay and data remain the original bytes rather than a reinterpretation.
 
+The runnable bundle includes the VGA screens produced by the game's deterministic first-run JPG decompressor. This avoids making every visitor repeat the original installation step. The untouched v3.42 distribution, including its compressed JPG inputs, remains in `original/cc3d342-original.zip`.
+
 The recovered assembly is retained in [`original/source`](original/source) for study and a possible future native rewrite.
 
 ## Provenance and licensing
