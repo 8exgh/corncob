@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;800&family=Share+Tech+Mono&display=swap");
+
+:root { color-scheme: dark; font-family: "Barlow Condensed", sans-serif; background: #090d0c; color: #e7ecda; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 50% 15%, #263127 0, #111713 34%, #070a09 78%); }
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .16; background-image: repeating-linear-gradient(0deg, transparent 0 3px, #93a467 4px); }
+main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 42px 0 24px; }
+header { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 20px; }
+.eyebrow, .status, footer, .controls { font-family: "Share Tech Mono", monospace; letter-spacing: .09em; }
+.eyebrow { margin: 0; color: #bbbf69; font-size: 12px; }
+h1 { margin: -4px 0 0; font-size: clamp(52px, 8vw, 94px); font-weight: 800; line-height: .9; letter-spacing: -.055em; text-transform: uppercase; }
+h1 span { color: #d6a448; font-style: italic; }
+.lede { max-width: 610px; margin: 12px 0 0; color: #9aa497; font-size: 19px; }
+.status { flex: none; color: #b9cc70; font-size: 12px; border: 1px solid #47513d; padding: 10px 13px; background: #111810; }
+.status i { display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: #c7e758; box-shadow: 0 0 10px #c7e758; }
+.machine { border: 1px solid #394038; background: #171c19; padding: 12px; box-shadow: 0 24px 80px #000b, inset 0 0 0 1px #222a24; }
+.screen-bezel { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; background: #030504; border: 8px solid #070a08; }
+#dos { width: 100%; height: 100%; }
+#boot { position: absolute; inset: 0; z-index: 10; display: grid; place-content: center; justify-items: center; gap: 14px; background: radial-gradient(circle, #202e23 0, #080d09 65%); transition: opacity .5s, transform .5s; }
+#boot.departing { opacity: 0; transform: scale(1.04); pointer-events: none; }
+#boot::after { content: ""; position: absolute; inset: 0; opacity: .22; background: repeating-linear-gradient(0deg, transparent 0 2px, #9fb089 3px); }
+#boot p, #boot small, #boot button, .reticle { position: relative; z-index: 1; }
+#boot p { font: 13px "Share Tech Mono", monospace; color: #9fab85; letter-spacing: .18em; }
+.reticle { width: 86px; height: 86px; border: 1px solid #bfc977; border-radius: 50%; box-shadow: 0 0 28px #bfc97722; }
+.reticle::before, .reticle::after { content: ""; position: absolute; background: #bfc977; }
+.reticle::before { width: 116px; height: 1px; top: 42px; left: -15px; }
+.reticle::after { height: 116px; width: 1px; left: 42px; top: -15px; }
+button { border: 1px solid #d4a543; color: #161309; background: #d4a543; padding: 12px 22px; font: 600 14px "Share Tech Mono", monospace; letter-spacing: .08em; cursor: pointer; }
+button:hover { background: #f1c45f; }
+#boot small { color: #6f796b; font: 12px "Share Tech Mono", monospace; }
+.controls { display: flex; align-items: center; gap: 24px; padding: 12px 5px 2px; color: #879083; font-size: 11px; }
+.controls button { margin-left: auto; padding: 7px 10px; color: #b5bfac; background: transparent; border-color: #4b5549; font-size: 10px; }
+kbd { color: #d7ddb6; font: inherit; }
+footer { display: flex; justify-content: space-between; gap: 24px; padding-top: 18px; color: #667064; font-size: 10px; }
+footer p { margin: 0; }
+footer a { color: #a8af79; text-decoration: none; }
+.machine:fullscreen { padding: 0; border: 0; background: #000; }
+.machine:fullscreen .screen-bezel { height: 100vh; aspect-ratio: auto; border: 0; }
+.machine:fullscreen .controls { display: none; }
+@media (max-width: 680px) { main { width: calc(100% - 16px); padding-top: 22px; } header { align-items: start; } .status { display: none; } .controls span { display: none; } footer { flex-direction: column; } .machine { padding: 5px; } }

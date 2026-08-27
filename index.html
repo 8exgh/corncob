@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Corncob 3D 3.42 running in a browser through WebAssembly." />
+    <title>Corncob 3D — WebAssembly Edition</title>
+    <link rel="stylesheet" href="/jsdos/js-dos.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <p class="eyebrow">PIE IN THE SKY SOFTWARE · 1992</p>
+          <h1>CORNCob <span>3D</span></h1>
+          <p class="lede">The original v3.42 DOS release, preserved byte-for-byte and running through a WebAssembly PC.</p>
+        </div>
+        <div class="status"><i></i> WASM READY</div>
+      </header>
+
+      <section class="machine" aria-label="Corncob 3D emulator">
+        <div class="screen-bezel">
+          <div id="dos"></div>
+          <div id="boot">
+            <div class="reticle"></div>
+            <p>AUTHENTIC DOS PAYLOAD</p>
+            <button id="launch">START ENGINE</button>
+            <small>Click to enable keyboard and audio</small>
+          </div>
+        </div>
+        <div class="controls">
+          <span><kbd>↑ ↓ ← →</kbd> Flight controls</span>
+          <span><kbd>Enter</kbd> Select</span>
+          <span><kbd>Esc</kbd> Back</span>
+          <button id="fullscreen">FULL SCREEN</button>
+        </div>
+      </section>
+
+      <footer>
+        <p>Original program and assets by Kevin Stokes / Pie in the Sky Software. Source released with permission to reuse.</p>
+        <a href="https://github.com/foone/Corncob3D">ORIGINAL MASM SOURCE ↗</a>
+      </footer>
+    </main>
+    <script src="/jsdos/emulators/emulators.js"></script>
+    <script>emulators.pathPrefix = "/jsdos/emulators/";</script>
+    <script src="/jsdos/js-dos.js"></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
