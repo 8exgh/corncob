@@ -1,3 +1,6 @@
 node_modules/
 dist/
 .idea/
+reverse-engineering/vendor/
+reverse-engineering/*.png
+server-dist/

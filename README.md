@@ -1,19 +1,22 @@
 # Corncob 3D — WebAssembly edition
 
-An archival browser edition of **Corncob 3D v3.42**. The DOS program and its data files are unchanged; a DOSBox-compatible x86 runtime compiled to WebAssembly executes them in the browser.
+An archival browser edition of **Corncob 3D v3.42**. The original mode runs a reconstructed DOS build through a DOSBox-compatible x86 runtime compiled to WebAssembly. A separate real-time multiplayer mode adds five landing strips, optional call signs, shared player counts, combat damage, and respawns.
 
 ## Run locally
 
 ```sh
 npm install
-npm run dev
+npm run build
+npm start
 ```
 
-Then open the URL printed by Vite and click **Start engine**. The pinned js-dos runtime is hosted by this project, so playing does not depend on a third-party CDN.
+Then open `http://localhost:3057`. For frontend development, run `npm run dev`; the multiplayer/API server remains on port **3057**.
 
 ## What “WebAssembly port” means here
 
-The original is 16-bit MASM and talks directly to DOS, BIOS, VGA, keyboard, timer, and sound hardware interfaces. WebAssembly cannot execute that source directly. This project therefore preserves the released machine code and runs it with a WebAssembly DOS/PC compatibility layer. This is the fidelity-first version: gameplay and data remain the original bytes rather than a reinterpretation.
+The original is 16-bit MASM and talks directly to DOS, BIOS, VGA, keyboard, timer, and sound hardware interfaces. WebAssembly cannot execute that source directly. The original mode runs a source-reconstructed binary with a guarded assembly extension that adds four parallel runways. See [`reverse-engineering/README.md`](reverse-engineering/README.md) for the reproducible historical build notes.
+
+Multiplayer uses an authoritative TypeScript WebSocket service. Clients report motion while the server owns the roster, validates firing direction/range, applies damage, and respawns destroyed planes. There are no accounts; a blank call sign receives an anonymous pilot name.
 
 The runnable bundle includes the VGA screens produced by the game's deterministic first-run JPG decompressor. This avoids making every visitor repeat the original installation step. The untouched v3.42 distribution, including its compressed JPG inputs, remains in `original/cc3d342-original.zip`.
 

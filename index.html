@@ -14,7 +14,7 @@
         <div>
           <p class="eyebrow">PIE IN THE SKY SOFTWARE · 1992</p>
           <h1>CORNCob <span>3D</span></h1>
-          <p class="lede">The original v3.42 DOS release, preserved byte-for-byte and running through a WebAssembly PC.</p>
+          <p class="lede">The original v3.42 DOS flight engine, source-rebuilt and running through a WebAssembly PC.</p>
         </div>
         <div class="status"><i></i> WASM READY</div>
       </header>
@@ -25,7 +25,11 @@
           <div id="boot">
             <div class="reticle"></div>
             <p>AUTHENTIC DOS PAYLOAD</p>
-            <button id="launch">START ENGINE</button>
+            <div class="start-actions">
+              <button id="launch">ORIGINAL DOS</button>
+              <button id="multiplayer" class="secondary">MULTIPLAYER <b id="player-count">0</b></button>
+            </div>
+            <label class="pilot-name">CALL SIGN <input id="pilot-name" maxlength="16" placeholder="Optional" autocomplete="nickname"></label>
             <small>Click to enable keyboard and audio</small>
           </div>
         </div>
@@ -35,6 +39,12 @@
           <span><kbd>Esc</kbd> Back</span>
           <button id="fullscreen">FULL SCREEN</button>
         </div>
+      </section>
+
+      <section id="multiplayer-game" class="multiplayer-game" hidden aria-label="Corncob multiplayer">
+        <canvas id="multiplayer-canvas"></canvas>
+        <div class="mp-hud"><span id="mp-name"></span><span>HEALTH <b id="mp-health">100</b></span><span>PLAYERS <b id="mp-count">0</b></span><span>↑↓ THROTTLE · ←→ TURN · SPACE FIRE</span><button id="leave-multiplayer">LEAVE</button></div>
+        <div id="kill-feed" class="kill-feed"></div>
       </section>
 
       <footer>

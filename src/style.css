@@ -27,6 +27,11 @@ h1 span { color: #d6a448; font-style: italic; }
 .reticle::after { height: 116px; width: 1px; left: 42px; top: -15px; }
 button { border: 1px solid #d4a543; color: #161309; background: #d4a543; padding: 12px 22px; font: 600 14px "Share Tech Mono", monospace; letter-spacing: .08em; cursor: pointer; }
 button:hover { background: #f1c45f; }
+.start-actions { position: relative; z-index: 2; display: flex; gap: 10px; }
+.start-actions .secondary { color: #d4a543; background: transparent; }
+.start-actions b { display: inline-grid; min-width: 20px; height: 20px; margin-left: 5px; place-items: center; border-radius: 10px; color: #080d09; background: #b9cc70; }
+.pilot-name { position: relative; z-index: 2; color: #9fab85; font: 11px "Share Tech Mono", monospace; letter-spacing: .12em; }
+.pilot-name input { width: 145px; margin-left: 8px; padding: 7px 9px; border: 1px solid #47513d; outline: none; color: #e7ecda; background: #080d09; font: inherit; }
 #boot small { color: #6f796b; font: 12px "Share Tech Mono", monospace; }
 .controls { position: absolute; z-index: 20; right: 12px; bottom: 12px; left: 12px; display: flex; align-items: center; gap: 24px; padding: 9px 12px; color: #aeb8aa; font-size: 11px; background: #080d09cc; border: 1px solid #3e493d; backdrop-filter: blur(8px); opacity: .35; transition: opacity .2s; }
 .controls:hover, .controls:focus-within { opacity: 1; }
@@ -39,4 +44,10 @@ footer a { color: #a8af79; text-decoration: none; }
 .machine:fullscreen .screen-bezel { height: 100vh; aspect-ratio: auto; border: 0; }
 .machine:fullscreen .controls { display: none; }
 header, footer { display: none; }
+.multiplayer-game { position: fixed; inset: 0; z-index: 50; overflow: hidden; background: #8ab2c5; }
+.multiplayer-game[hidden] { display: none; }
+#multiplayer-canvas { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
+.mp-hud { position: absolute; inset: 12px 12px auto; display: flex; align-items: center; gap: 22px; padding: 9px 12px; border: 1px solid #bec783; color: #ecf1cf; background: #10170ccc; font: 12px "Share Tech Mono", monospace; }
+.mp-hud button { margin-left: auto; padding: 6px 10px; font-size: 10px; }
+.kill-feed { position: absolute; top: 64px; right: 18px; color: #fff4c0; text-align: right; text-shadow: 1px 1px #000; font: 13px "Share Tech Mono", monospace; }
 @media (max-width: 680px) { .controls { right: 8px; bottom: 8px; left: 8px; } .controls span { display: none; } }

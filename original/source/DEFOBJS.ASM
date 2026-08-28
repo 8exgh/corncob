@@ -4523,6 +4523,59 @@ noradardie:
 	ret
 .endp
 
+IFDEF five_runways
+; Add one complete parallel runway. DX:AX is the signed 32-bit lateral
+; offset from the original centerline. The runway uses the same end caps,
+; ten pavement segments, collision behavior, and drawing templates as the
+; original strip.
+.proc	addrunway	auto
+	push	dx
+	push	ax
+	mov	si,offset @dataseg:kbuf
+	mov	di,si
+	push	ds
+	pop	es
+	mov	cx,74
+	xor	ax,ax
+	rep	stosw
+	pop	ax
+	pop	dx
+	mov	word ptr [si],-1
+	mov	word ptr [si+2],roadx
+	mov	[si+4],ax
+	mov	[si+6],dx
+	xor	ax,ax
+	mov	[si+8],ax
+	mov	[si+10],ax
+
+	push	si
+	mov	di,offset @dataseg:objroadend
+	mov	initialqual,0
+	call	strtperm
+	pop	si
+	add	word ptr [si],32768
+	adc	word ptr [si+2],-1
+
+	mov	cx,10
+addrunwaypieces:
+	push	si
+	push	cx
+	mov	di,offset @dataseg:roadpiece
+	mov	initialqual,0
+	call	strtperm
+	pop	cx
+	pop	si
+	add	word ptr [si],32768
+	adc	word ptr [si+2],-1
+	loop	addrunwaypieces
+
+	mov	di,offset @dataseg:objroadend1
+	mov	initialqual,0
+	call	strtperm
+	ret
+.endp
+ENDIF
+
 .proc	initperms	auto
 
 	inc	nplaced			; put planes behind us
@@ -4586,6 +4639,23 @@ rdpilp:
 	mov	initialqual,7		; make a non-striped roadpiece
 	mov	di,offset @dataseg:roadpiece
 	call	strtperm
+
+IFDEF five_runways
+	; Two strips on either side of the original, separated by one full
+	; runway width (2*rl) center-to-center.
+	mov	ax,2*rl
+	xor	dx,dx
+	call	addrunway
+	mov	ax,-2*rl
+	mov	dx,-1
+	call	addrunway
+	xor	ax,ax
+	mov	dx,1
+	call	addrunway
+	xor	ax,ax
+	mov	dx,-1
+	call	addrunway
+ENDIF
 
 
 	cmp	actionflag,0
